@@ -6,6 +6,12 @@
           "stream"
      ],
      "license": "MIT",
+     "authors": [
+          {
+               "name": "Akihito Koriyama",
+               "email": "akihito.koriyama@gmail.com"
+          }
+     ],
      "autoload": {
           "psr-4": {
                "BEAR\\Streamer\\": "src/"
