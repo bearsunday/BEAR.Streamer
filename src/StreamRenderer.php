@@ -41,6 +41,7 @@ final class StreamRenderer implements RenderInterface
     {
         $view = $this->getView($ro);
         $this->streamer->addStreams($this->streams);
+        $ro->view = $view;
 
         return $view;
     }
