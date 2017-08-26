@@ -22,7 +22,10 @@
                "BEAR\\Streamer\\": [
                     "tests/Fake"
                ]
-          }
+          },
+          "files": [
+               "tests/functions.php"
+          ]
      },
      "require-dev": {
           "phpunit/phpunit": "^6.2",
