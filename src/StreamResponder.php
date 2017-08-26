@@ -9,7 +9,7 @@ namespace BEAR\Streamer;
 use BEAR\Resource\ResourceObject;
 use BEAR\Sunday\Extension\Transfer\TransferInterface;
 
-class HttpStreamResponder implements TransferInterface
+class StreamResponder implements TransferInterface
 {
     /**
      * @var StreamerInterface
@@ -43,7 +43,7 @@ class HttpStreamResponder implements TransferInterface
         $stream = $this->streamer->getStream($resourceObject->view);
 
         rewind($stream);
-        while (feof($stream)) {
+        while (! feof($stream)) {
             echo fread($stream, 8192);
         }
     }
