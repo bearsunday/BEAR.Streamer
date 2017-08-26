@@ -9,9 +9,9 @@ namespace BEAR\Streamer;
 trait StreamTransferInject
 {
     /**
-     * @var \BEAR\Streamer\StreamerInterface
+     * @var \BEAR\Resource\TransferInterface
      */
-    private $streamer;
+    private $responder;
 
     /**
      * @\Ray\Di\Di\Inject()
@@ -24,16 +24,19 @@ trait StreamTransferInject
 
     /**
      * @\Ray\Di\Di\Inject()
+     * @\BEAR\Streamer\Annotation\Stream()
      */
-    public function setStreamer(\BEAR\Streamer\StreamerInterface $streamer)
+    public function setTransfer(\BEAR\Resource\TransferInterface $responder)
     {
-        $this->streamer = $streamer;
+        $this->responder = $responder;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function transfer(\BEAR\Resource\TransferInterface $responder, array $server)
     {
         unset($responder);
-        $responder = new \BEAR\Streamer\StreamResponder($this->streamer);
-        parent::transfer($responder, $server);
+        parent::transfer($this->responder, $server);
     }
 }
