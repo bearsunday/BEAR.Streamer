@@ -1,10 +1,9 @@
 {
-     "name": "bear/middleware",
-     "description": "BEAR.Resource stream responder",
+     "name": "bear/streamer",
+     "description": "BEAR.Resource HTTP stream responder",
      "keywords": [
-          "PSR7",
-          "Relay",
-          "BEAR.Sunday"
+          "BEAR",
+          "stream"
      ],
      "license": "MIT",
      "autoload": {
