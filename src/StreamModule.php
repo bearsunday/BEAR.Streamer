@@ -19,10 +19,9 @@ class StreamModule extends AbstractModule
      */
     protected function configure()
     {
-        $this->rename(RenderInterface::class, 'original');
-        $this->bind(RenderInterface::class)->to(StreamRenderer::class)->in(Scope::SINGLETON);
+        $this->bind(RenderInterface::class)->annotatedWith(Stream::class)->to(StreamRenderer::class);
         $this->bind()->annotatedWith(Stream::class)->toProvider(StreamProvider::class)->in(Scope::SINGLETON);
         $this->bind(StreamerInterface::class)->to(Streamer::class)->in(Scope::SINGLETON);
-        $this->bind(TransferInterface::class)->annotatedWith(Stream::class)->to(HttpStreamResponder::class);
+        $this->bind(TransferInterface::class)->annotatedWith(Stream::class)->to(StreamResponder::class);
     }
 }

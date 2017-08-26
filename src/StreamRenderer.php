@@ -8,7 +8,6 @@ namespace BEAR\Streamer;
 
 use BEAR\Resource\RenderInterface;
 use BEAR\Resource\ResourceObject;
-use Ray\Di\Di\Named;
 
 final class StreamRenderer implements RenderInterface
 {
@@ -29,9 +28,6 @@ final class StreamRenderer implements RenderInterface
      */
     private $streamer;
 
-    /**
-     * @Named("renderer=original")
-     */
     public function __construct(RenderInterface $renderer, StreamerInterface $streamer)
     {
         $this->renderer = $renderer;

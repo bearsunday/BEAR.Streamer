@@ -9,6 +9,7 @@ namespace BEAR\Streamer;
 use BEAR\Resource\Module\ResourceModule;
 use BEAR\Resource\RenderInterface;
 use BEAR\Resource\ResourceInterface;
+use BEAR\Streamer\Annotation\Stream;
 use PHPUnit\Framework\TestCase;
 use Ray\Di\Injector;
 
@@ -33,7 +34,7 @@ class IntegrateTest extends TestCase
     {
         $injector = new Injector(new StreamModule(new ResourceModule(__NAMESPACE__)));
         $this->resource = $injector->getInstance(ResourceInterface::class);
-        $this->renderer = $injector->getInstance(RenderInterface::class); // singleton renderer
+        $this->renderer = $injector->getInstance(RenderInterface::class, Stream::class);
         $this->streamer = $injector->getInstance(StreamerInterface::class);
     }
 
