@@ -1,5 +1,9 @@
 # A HTTP stream transfer for BEAR.Sunday
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bearsunday/BEAR.Streamer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bearsunday/BEAR.Streamer/?branch=1.x)
+[![Code Coverage](https://scrutinizer-ci.com/g/bearsunday/BEAR.Streamer/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/bearsunday/BEAR.Streamer/?branch=1.x)
+[![Build Status](https://travis-ci.org/bearsunday/BEAR.Streamer.svg?branch=1.x)](https://travis-ci.org/bearsunday/BEAR.Streamer)
+
 Assign stream to resource-body.
 
 ```php
