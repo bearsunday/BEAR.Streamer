@@ -29,7 +29,8 @@
      },
      "require-dev": {
           "phpunit/phpunit": "^6.2",
-          "bear/sunday": "^1.2"
+          "bear/sunday": "^1.2",
+          "bear/resource": "^1.8.1"
      },
      "scripts" :{
           "test": ["@cs", "phpunit"],
