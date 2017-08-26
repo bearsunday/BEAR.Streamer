@@ -15,6 +15,7 @@ env:
 before_script:
   - composer self-update
   - composer update $DEPENDENCIES
+  - composer show
 script:
   - ./vendor/bin/phpunit --coverage-clover=coverage.clover;
   - if [ "$TRAVIS_PHP_VERSION" = "7.1" ]; then wget http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar && php php-cs-fixer-v2.phar fix --config=.php_cs -v --dry-run --using-cache=no --path-mode=intersection `git diff --name-only --diff-filter=ACMRTUXB $TRAVIS_COMMIT_RANGE`; fi
