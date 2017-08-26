@@ -6,27 +6,32 @@
  */
 namespace BEAR\Streamer;
 
+use BEAR\Resource\RenderInterface;
+use BEAR\Resource\TransferInterface;
+use BEAR\Streamer\Annotation\Stream;
+use Ray\Di\Di\Inject;
+
 trait StreamTransferInject
 {
     /**
-     * @var \BEAR\Resource\TransferInterface
+     * @var TransferInterface
      */
     private $responder;
 
     /**
-     * @\Ray\Di\Di\Inject()
-     * @\BEAR\Streamer\Annotation\Stream()
+     * @Inject
+     * @Stream
      */
-    public function setRenderer(\BEAR\Resource\RenderInterface $render)
+    public function setRenderer(RenderInterface $render)
     {
         return parent::setRenderer($render);
     }
 
     /**
-     * @\Ray\Di\Di\Inject()
-     * @\BEAR\Streamer\Annotation\Stream()
+     * @Inject
+     * @Stream
      */
-    public function setTransfer(\BEAR\Resource\TransferInterface $responder)
+    public function setTransfer(TransferInterface $responder)
     {
         $this->responder = $responder;
     }
@@ -34,7 +39,7 @@ trait StreamTransferInject
     /**
      * @inheritdoc
      */
-    public function transfer(\BEAR\Resource\TransferInterface $responder, array $server)
+    public function transfer(TransferInterface $responder, array $server)
     {
         unset($responder);
         parent::transfer($this->responder, $server);
