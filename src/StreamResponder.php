@@ -40,8 +40,8 @@ class StreamResponder implements TransferInterface
             header("{$label}: {$value}", false);
         }
 
+        // stream body
         $stream = $this->streamer->getStream($resourceObject->view);
-
         rewind($stream);
         while (! feof($stream)) {
             echo fread($stream, 8192);
