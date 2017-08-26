@@ -1,6 +1,6 @@
 {
      "name": "bear/streamer",
-     "description": "BEAR.Resource HTTP stream responder",
+     "description": "BEAR.Sunday HTTP stream responder",
      "keywords": [
           "BEAR",
           "stream"
