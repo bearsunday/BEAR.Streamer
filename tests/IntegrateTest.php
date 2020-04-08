@@ -90,7 +90,7 @@ class IntegrateTest extends TestCase
         $headers = self::$headers;
         $expected = [
             [
-                'content-type: application/json',
+                'Content-Type: application/json',
                 false
             ]
         ];
