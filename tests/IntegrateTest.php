@@ -34,7 +34,7 @@ class IntegrateTest extends TestCase
      */
     private $streamer;
 
-    protected function setUp()
+    protected function setUp() : void
     {
         $injector = new Injector(new StreamModule(new ResourceModule(__NAMESPACE__)));
         $this->resource = $injector->getInstance(ResourceInterface::class);
