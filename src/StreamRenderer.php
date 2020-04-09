@@ -49,7 +49,7 @@ final class StreamRenderer implements RenderInterface
     /**
      * {@inheritdoc}
      */
-    public function getView(ResourceObject $ro)
+    public function getView(ResourceObject $ro) : string
     {
         if (is_array($ro->body)) {
             $this->pushArrayBody($ro);
