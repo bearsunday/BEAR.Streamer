@@ -41,7 +41,7 @@ class StreamResponder implements TransferInterface
         http_response_code($resourceObject->code);
 
         // stream body
-        $stream = $this->streamer->getStream($resourceObject->view);
+        $stream = $this->streamer->getStream((string) $resourceObject->view);
         rewind($stream);
         while (! feof($stream)) {
             echo fread($stream, 8192);
