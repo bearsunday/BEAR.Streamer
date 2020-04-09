@@ -17,7 +17,7 @@ class StreamModule extends AbstractModule
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure() : void
     {
         $this->bind(RenderInterface::class)->annotatedWith(Stream::class)->to(StreamRenderer::class);
         $this->bind()->annotatedWith(Stream::class)->toProvider(StreamProvider::class)->in(Scope::SINGLETON);
