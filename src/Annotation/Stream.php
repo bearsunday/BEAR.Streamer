@@ -15,5 +15,8 @@ use Ray\Di\Di\Qualifier;
  */
 final class Stream
 {
+    /**
+     * @var string
+     */
     public $value;
 }

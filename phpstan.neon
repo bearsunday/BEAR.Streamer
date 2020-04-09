@@ -1,0 +1,14 @@
+parameters:
+  level: max
+  paths:
+    - src
+    - tests
+  ignoreErrors:
+  -
+      message: "#has no return typehint specified\\.$#"
+      path: tests/*.php
+  -
+      message: '#Method BEAR\\Streamer\\StreamProvider::get\(\) has no return typehint specified\.$#'
+      path: src/StreamProvider.php
+  checkMissingIterableValueType: false
+  checkGenericClassInNonGenericObjectType: false

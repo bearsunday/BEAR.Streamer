@@ -6,7 +6,7 @@
  */
 namespace BEAR\Streamer;
 
-function header($string, $replace = true, $http_response_code = null)
+function header(string $string, bool $replace = true, string $http_response_code = null) : void
 {
     IntegrateTest::$headers[] = func_get_args();
 

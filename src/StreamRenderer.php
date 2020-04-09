@@ -49,7 +49,7 @@ final class StreamRenderer implements RenderInterface
     /**
      * {@inheritdoc}
      */
-    public function getView(ResourceObject $ro)
+    public function getView(ResourceObject $ro) : string
     {
         if (is_array($ro->body)) {
             $this->pushArrayBody($ro);
@@ -82,7 +82,7 @@ final class StreamRenderer implements RenderInterface
         return $this->renderer->render($ro);
     }
 
-    private function pushArrayBody(ResourceObject $ro)
+    private function pushArrayBody(ResourceObject $ro) : void
     {
         foreach ($ro->body as &$item) {
             if (is_resource($item) && get_resource_type($item) === 'stream') {
