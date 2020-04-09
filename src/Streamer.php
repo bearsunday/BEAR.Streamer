@@ -48,9 +48,9 @@ final class Streamer implements StreamerInterface
         $regex = sprintf('/(%s)/', implode('|', $hash));
         preg_match_all($regex, $string, $match, PREG_SET_ORDER);
         $list = $this->collect($match);
-        $bodies = preg_split($regex, $string);
+        $bodies = (array) preg_split($regex, $string);
         foreach ($bodies as $body) {
-            fwrite($stream, $body);
+            fwrite($stream, (string) $body);
             $index = array_shift($list);
             if (isset($this->streams[$index])) {
                 $popStream = $this->streams[$index];
