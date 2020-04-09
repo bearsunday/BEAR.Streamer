@@ -12,6 +12,8 @@ class StreamProvider implements ProviderInterface
 {
     /**
      * {@inheritdoc}
+     *
+     * @return resource
      */
     public function get()
     {
