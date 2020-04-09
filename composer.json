@@ -20,6 +20,7 @@
      "autoload-dev": {
           "psr-4": {
                "BEAR\\Streamer\\": [
+                    "tests",
                     "tests/Fake"
                ]
           },
@@ -37,6 +38,7 @@
      },
      "scripts" :{
           "test": ["@cs", "phpunit"],
+          "tests": ["@cs", "@test", "phpstan analyse -c phpstan.neon", "psalm"],
           "coverage": ["php -dzend_extension=xdebug.so ./vendor/bin/phpunit --coverage-text --coverage-html=build/coverage"],
           "cs": ["php-cs-fixer fix -v --dry-run", "phpcs --standard=./phpcs.xml src"],
           "cs-fix": ["php-cs-fixer fix -v", "phpcbf src"]
