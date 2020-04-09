@@ -13,7 +13,7 @@ interface StreamerInterface
     /**
      * @param resource[] $streams
      */
-    public function addStreams(array $streams);
+    public function addStreams(array $streams) : void;
 
     /**
      * Return single root stream
