@@ -45,7 +45,7 @@ class IntegrateTest extends TestCase
         $this->streamer = $injector->getInstance(StreamerInterface::class);
     }
 
-    public function caseProvider()
+    public function caseProvider() : array
     {
         return [
             ['page://self/stream-array', '{
@@ -70,7 +70,7 @@ class IntegrateTest extends TestCase
     /**
      * @dataProvider caseProvider
      */
-    public function testRender($uri, $expected)
+    public function testRender(string $uri, string $expected)
     {
         /* @var $resource \BEAR\Resource\ResourceInterface */
         $ro = $this->resource->newInstance($uri);
