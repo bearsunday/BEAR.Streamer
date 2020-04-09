@@ -17,6 +17,9 @@ use Ray\Di\Injector;
 
 class IntegrateTest extends TestCase
 {
+    /**
+     * @var array
+     */
     public static $headers = [];
 
     /**
@@ -72,6 +75,7 @@ class IntegrateTest extends TestCase
         /* @var $resource \BEAR\Resource\ResourceInterface */
         $ro = $this->resource->newInstance($uri);
         $ro->setRenderer($this->renderer);
+        assert(method_exists($ro, 'onGet'));
         $view = (string) $ro->onGet();
         $stream = $this->streamer->getStream($view);
         rewind($stream);
