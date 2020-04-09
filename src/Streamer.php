@@ -10,6 +10,9 @@ use BEAR\Streamer\Annotation\Stream;
 
 final class Streamer implements StreamerInterface
 {
+    /**
+     * @var resource
+     */
     private $stream;
 
     /**
@@ -30,7 +33,7 @@ final class Streamer implements StreamerInterface
     /**
      * @param resource[] $streams
      */
-    public function addStreams(array $streams)
+    public function addStreams(array $streams) : void
     {
         $this->streams += $streams;
     }
