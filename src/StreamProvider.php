@@ -17,6 +17,9 @@ class StreamProvider implements ProviderInterface
      */
     public function get()
     {
-        return fopen('php://temp/', 'r+');
+        $stream = fopen('php://temp/', 'r+');
+        assert(is_resource($stream));
+
+        return $stream;
     }
 }
