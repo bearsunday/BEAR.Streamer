@@ -39,7 +39,7 @@ trait StreamTransferInject
     /**
      * {@inheritdoc}
      */
-    public function transfer(TransferInterface $responder, array $server)
+    public function transfer(TransferInterface $responder, array $server) : void
     {
         unset($responder);
         parent::transfer($this->responder, $server);

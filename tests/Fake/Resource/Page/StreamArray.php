@@ -13,7 +13,7 @@ class StreamArray extends ResourceObject
     {
         $this->body = [
             'msg' =>'hello world',
-            'stream' => fopen(__DIR__ . '/message.txt', 'r')
+            'stream' => fopen(__DIR__ . '/message.txt', 'rb')
         ];
 
         return $this;
