@@ -1,7 +1,9 @@
-.idea
-build
-vendor
-*.cache
-composer.lock
-
-.DS_Store
+/vendor/
+/build/
+/tests/tmp/
+/.phpcs-cache
+/.phpunit.result.cache
+/composer.lock
+/coverage.xml
+/vendor-bin/**/vendor
+/demo/vendor

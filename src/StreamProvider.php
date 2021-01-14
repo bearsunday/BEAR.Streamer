@@ -7,6 +7,7 @@
 namespace BEAR\Streamer;
 
 use Ray\Di\ProviderInterface;
+use function is_resource;
 
 class StreamProvider implements ProviderInterface
 {
@@ -17,9 +18,9 @@ class StreamProvider implements ProviderInterface
      */
     public function get()
     {
-        $stream = fopen('php://temp/', 'r+');
-        assert(is_resource($stream));
+        $resource = fopen('php://temp/', 'r+');
+        assert(is_resource($resource));
 
-        return $stream;
+        return $resource;
     }
 }

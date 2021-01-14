@@ -16,4 +16,8 @@
         <exclude name="PEAR.Commenting.FunctionComment.Missing"/>
         <exclude name="PEAR.Commenting.FunctionComment.ParameterCommentsNotAligned"/>
     </rule>
+    <!-- Directories to be checked -->
+    <file>src</file>
+    <file>tests</file>
+    <exclude-pattern>*/src/Annotation/*</exclude-pattern>
 </ruleset>
