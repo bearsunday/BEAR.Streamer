@@ -18,6 +18,7 @@ trait StreamTransferInject
      * @Inject
      * @Stream
      */
+    #[Inject, Stream]
     public function setRenderer(RenderInterface $render)
     {
         return parent::setRenderer($render);
@@ -27,6 +28,7 @@ trait StreamTransferInject
      * @Inject
      * @Stream
      */
+    #[Inject, Stream]
     public function setTransfer(TransferInterface $responder)
     {
         $this->responder = $responder;
