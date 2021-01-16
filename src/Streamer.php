@@ -28,6 +28,7 @@ final class Streamer implements StreamerInterface
 
     /**
      * @param resource $stream
+     *
      * @Stream
      */
     public function __construct($stream)
@@ -55,6 +56,7 @@ final class Streamer implements StreamerInterface
         $hash = array_keys($this->streams);
         $regex = sprintf('/(%s)/', implode('|', $hash));
         preg_match_all($regex, $string, $match, PREG_SET_ORDER);
+        /** @var array<int, string> $match */
         $list = $this->collect($match);
         $bodies = (array) preg_split($regex, $string);
         foreach ($bodies as $body) {
