@@ -15,6 +15,8 @@ trait StreamTransferInject
     private $responder;
 
     /**
+     * @return static
+     *
      * @Inject
      * @Stream
      */

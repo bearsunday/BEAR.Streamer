@@ -22,7 +22,7 @@ use function stream_get_contents;
 
 class IntegrateTest extends TestCase
 {
-    /** @var array<string> */
+    /** @var array<array<string>> */
     public static $headers = [];
 
     /** @var ResourceInterface */
@@ -42,6 +42,9 @@ class IntegrateTest extends TestCase
         $this->streamer = $injector->getInstance(StreamerInterface::class);
     }
 
+    /**
+     * @return array<array<string>>
+     */
     public function caseProvider(): array
     {
         return [
