@@ -19,7 +19,7 @@
     <file>tests</file>
     <exclude-pattern>*/tests/tmp/*</exclude-pattern>
     <exclude-pattern>*/src/Annotation/*</exclude-pattern>
-    <exclude-pattern>*/src/Inject/*</exclude-pattern>
+    <exclude-pattern>*/tests/header.php</exclude-pattern>
 
     <!-- PSR12 Coding Standard -->
     <rule ref="PSR12"/>
@@ -41,6 +41,8 @@
         <!-- /Base -->
         <!-- Option -->
         <exclude name="SlevomatCodingStandard.ControlStructures.EarlyExit.EarlyExitNotUsed"/>
+        <!-- attribute -->
+        <exclude name="Squiz.WhiteSpace.FunctionSpacing.Before"/>
         <!-- /Option -->
         <!-- Exclude Fake files form Doctrine CS -->
         <exclude-pattern>*/tests/Fake/*</exclude-pattern>
