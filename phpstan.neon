@@ -3,9 +3,7 @@ parameters:
   paths:
     - src
     - tests
-  ignoreErrors:
-  -
-      message: "#has no return typehint specified\\.$#"
-      path: tests/*.php
+  excludes_analyse:
+      - 'tests/Fake'
   checkMissingIterableValueType: false
   checkGenericClassInNonGenericObjectType: false

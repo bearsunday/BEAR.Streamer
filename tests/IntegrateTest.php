@@ -83,9 +83,8 @@ class IntegrateTest extends TestCase
     /**
      * @dataProvider caseProvider
      */
-    public function testRender(string $uri, string $expected)
+    public function testRender(string $uri, string $expected): void
     {
-        /** @var ResourceInterface $resource */
         $ro = $this->resource->newInstance($uri);
         $ro->setRenderer($this->renderer);
         assert(method_exists($ro, 'onGet'));
@@ -96,7 +95,7 @@ class IntegrateTest extends TestCase
         $this->assertSame($expected, $view);
     }
 
-    public function testTrait()
+    public function testTrait(): void
     {
         $injector = new Injector(new StreamModule(new ResourceModule(__NAMESPACE__)));
         $page = $injector->getInstance(StreamArray::class);
