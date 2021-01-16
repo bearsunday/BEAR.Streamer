@@ -1,19 +1,20 @@
 <?php
-/**
- * This file is part of the BEAR.Streamer package.
- *
- * @license http://opensource.org/licenses/MIT MIT
- */
+
+declare(strict_types=1);
+
 namespace BEAR\Streamer;
 
 use BEAR\Resource\ResourceObject;
 use BEAR\Sunday\Extension\Transfer\TransferInterface;
 
+use function feof;
+use function fread;
+use function http_response_code;
+use function rewind;
+
 class StreamResponder implements TransferInterface
 {
-    /**
-     * @var StreamerInterface
-     */
+    /** @var StreamerInterface */
     private $streamer;
 
     public function __construct(StreamerInterface $streamer)
@@ -24,7 +25,7 @@ class StreamResponder implements TransferInterface
     /**
      * {@inheritdoc}
      */
-    public function __invoke(ResourceObject $resourceObject, array $server) : void
+    public function __invoke(ResourceObject $resourceObject, array $server): void
     {
         unset($server);
         // render
@@ -34,7 +35,7 @@ class StreamResponder implements TransferInterface
 
         // header
         foreach ($resourceObject->headers as $label => $value) {
-            header("{$label}: {$value}", false);
+            header("{$label}: {$value}", false); // phpcs:ignore SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly.ReferenceViaFallbackGlobalName
         }
 
         // code

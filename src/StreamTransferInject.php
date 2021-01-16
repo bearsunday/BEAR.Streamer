@@ -1,9 +1,7 @@
 <?php
-/**
- * This file is part of the BEAR.Streamer package.
- *
- * @license http://opensource.org/licenses/MIT MIT
- */
+
+declare(strict_types=1);
+
 namespace BEAR\Streamer;
 
 use BEAR\Resource\RenderInterface;
@@ -13,15 +11,16 @@ use Ray\Di\Di\Inject;
 
 trait StreamTransferInject
 {
-    /**
-     * @var TransferInterface
-     */
+    /** @var TransferInterface */
     private $responder;
 
     /**
+     * @return static
+     *
      * @Inject
      * @Stream
      */
+    #[Inject, Stream]
     public function setRenderer(RenderInterface $render)
     {
         return parent::setRenderer($render);
@@ -31,7 +30,8 @@ trait StreamTransferInject
      * @Inject
      * @Stream
      */
-    public function setTransfer(TransferInterface $responder)
+    #[Inject, Stream]
+    public function setTransfer(TransferInterface $responder): void
     {
         $this->responder = $responder;
     }
@@ -39,7 +39,7 @@ trait StreamTransferInject
     /**
      * {@inheritdoc}
      */
-    public function transfer(TransferInterface $responder, array $server)
+    public function transfer(TransferInterface $responder, array $server): void
     {
         unset($responder);
         parent::transfer($this->responder, $server);

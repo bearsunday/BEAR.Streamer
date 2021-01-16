@@ -1,19 +1,21 @@
 <?php
-/**
- * This file is part of the BEAR.Streamer package.
- *
- * @license http://opensource.org/licenses/MIT MIT
- */
+
+declare(strict_types=1);
+
 namespace BEAR\Streamer;
 
 use BEAR\Resource\RenderInterface;
 use BEAR\Resource\ResourceObject;
 
+use function get_resource_type;
+use function is_array;
+use function is_resource;
+use function mt_rand;
+use function uniqid;
+
 final class StreamRenderer implements RenderInterface
 {
-    /**
-     * @var RenderInterface
-     */
+    /** @var RenderInterface */
     private $renderer;
 
     /**
@@ -23,9 +25,7 @@ final class StreamRenderer implements RenderInterface
      */
     private $streams = [];
 
-    /**
-     * @var StreamerInterface
-     */
+    /** @var StreamerInterface */
     private $streamer;
 
     public function __construct(RenderInterface $renderer, StreamerInterface $streamer)
@@ -49,7 +49,7 @@ final class StreamRenderer implements RenderInterface
     /**
      * {@inheritdoc}
      */
-    public function getView(ResourceObject $ro) : string
+    public function getView(ResourceObject $ro): string
     {
         if (is_array($ro->body)) {
             $this->pushArrayBody($ro);
@@ -62,10 +62,8 @@ final class StreamRenderer implements RenderInterface
 
     /**
      * @param resource $item
-     *
-     * @return string
      */
-    private function pushStream($item) : string
+    private function pushStream($item): string
     {
         $id = uniqid(__FUNCTION__ . mt_rand(), true) . '_';
         $this->streams[$id] = $item; // push
@@ -73,7 +71,7 @@ final class StreamRenderer implements RenderInterface
         return $id;
     }
 
-    private function pushScalarBody(ResourceObject $ro) : string
+    private function pushScalarBody(ResourceObject $ro): string
     {
         if (is_resource($ro->body) && get_resource_type($ro->body) === 'stream') {
             return $this->pushStream($ro->body);
@@ -82,7 +80,7 @@ final class StreamRenderer implements RenderInterface
         return $this->renderer->render($ro);
     }
 
-    private function pushArrayBody(ResourceObject $ro) : void
+    private function pushArrayBody(ResourceObject $ro): void
     {
         foreach ($ro->body as &$item) {
             if (is_resource($item) && get_resource_type($item) === 'stream') {

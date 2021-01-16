@@ -22,7 +22,7 @@
                ]
           },
           "files": [
-               "tests/functions.php"
+               "tests/header.php"
           ]
      },
      "require": {

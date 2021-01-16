@@ -1,12 +1,13 @@
 <?php
-/**
- * This file is part of the BEAR.Streamer package.
- *
- * @license http://opensource.org/licenses/MIT MIT
- */
+
+declare(strict_types=1);
+
 namespace BEAR\Streamer;
 
 use Ray\Di\ProviderInterface;
+
+use function assert;
+use function fopen;
 use function is_resource;
 
 class StreamProvider implements ProviderInterface
