@@ -23,12 +23,11 @@ final class Streamer implements StreamerInterface
     /** @var resource */
     private $stream;
 
-    /** @var array */
+    /** @var array<resource> */
     private $streams = [];
 
     /**
      * @param resource $stream
-     *
      * @Stream
      */
     public function __construct($stream)
@@ -71,6 +70,11 @@ final class Streamer implements StreamerInterface
         return $stream;
     }
 
+    /**
+     * @param array<int, string> $match
+     *
+     * @return array<int, string>
+     */
     private function collect(array $match): array
     {
         $list = [];

@@ -2,10 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * This file is part of the BEAR.Streamer package.
- */
-
 namespace BEAR\Streamer;
 
 use BEAR\Resource\Module\ResourceModule;
@@ -26,7 +22,7 @@ use function stream_get_contents;
 
 class IntegrateTest extends TestCase
 {
-    /** @var array */
+    /** @var array<string> */
     public static $headers = [];
 
     /** @var ResourceInterface */

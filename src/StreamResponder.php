@@ -9,7 +9,6 @@ use BEAR\Sunday\Extension\Transfer\TransferInterface;
 
 use function feof;
 use function fread;
-use function header;
 use function http_response_code;
 use function rewind;
 

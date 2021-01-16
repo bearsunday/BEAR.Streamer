@@ -2,10 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * This file is part of the BEAR.Streamer package.
- */
-
 namespace BEAR\Streamer;
 
 use function func_get_args;
