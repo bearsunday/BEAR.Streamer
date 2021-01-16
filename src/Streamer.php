@@ -1,29 +1,39 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * This file is part of the BEAR.Streamer package.
- *
- * @license http://opensource.org/licenses/MIT MIT
  */
+
 namespace BEAR\Streamer;
 
 use BEAR\Streamer\Annotation\Stream;
 
+use function array_keys;
+use function array_shift;
+use function fwrite;
+use function implode;
+use function preg_match_all;
+use function preg_split;
+use function rewind;
+use function sprintf;
+use function stream_copy_to_stream;
+
+use const PREG_SET_ORDER;
+
 final class Streamer implements StreamerInterface
 {
-    /**
-     * @var resource
-     */
+    /** @var resource */
     private $stream;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     private $streams = [];
 
     /**
-     * @Stream
-     *
      * @param resource $stream
+     *
+     * @Stream
      */
     public function __construct($stream)
     {
@@ -33,7 +43,7 @@ final class Streamer implements StreamerInterface
     /**
      * @param resource[] $streams
      */
-    public function addStreams(array $streams) : void
+    public function addStreams(array $streams): void
     {
         $this->streams += $streams;
     }
@@ -65,7 +75,7 @@ final class Streamer implements StreamerInterface
         return $stream;
     }
 
-    private function collect(array $match) : array
+    private function collect(array $match): array
     {
         $list = [];
         foreach ($match as $item) {

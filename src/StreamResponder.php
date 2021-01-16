@@ -1,19 +1,25 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * This file is part of the BEAR.Streamer package.
- *
- * @license http://opensource.org/licenses/MIT MIT
  */
+
 namespace BEAR\Streamer;
 
 use BEAR\Resource\ResourceObject;
 use BEAR\Sunday\Extension\Transfer\TransferInterface;
 
+use function feof;
+use function fread;
+use function header;
+use function http_response_code;
+use function rewind;
+
 class StreamResponder implements TransferInterface
 {
-    /**
-     * @var StreamerInterface
-     */
+    /** @var StreamerInterface */
     private $streamer;
 
     public function __construct(StreamerInterface $streamer)
@@ -24,7 +30,7 @@ class StreamResponder implements TransferInterface
     /**
      * {@inheritdoc}
      */
-    public function __invoke(ResourceObject $resourceObject, array $server) : void
+    public function __invoke(ResourceObject $resourceObject, array $server): void
     {
         unset($server);
         // render

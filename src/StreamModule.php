@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * This file is part of the BEAR.Streamer package.
- *
- * @license http://opensource.org/licenses/MIT MIT
  */
+
 namespace BEAR\Streamer;
 
 use BEAR\Resource\RenderInterface;
@@ -17,7 +19,7 @@ class StreamModule extends AbstractModule
     /**
      * {@inheritdoc}
      */
-    protected function configure() : void
+    protected function configure(): void
     {
         $this->bind(RenderInterface::class)->annotatedWith(Stream::class)->to(StreamRenderer::class);
         $this->bind()->annotatedWith(Stream::class)->toProvider(StreamProvider::class)->in(Scope::SINGLETON);

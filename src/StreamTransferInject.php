@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * This file is part of the BEAR.Streamer package.
- *
- * @license http://opensource.org/licenses/MIT MIT
  */
+
 namespace BEAR\Streamer;
 
 use BEAR\Resource\RenderInterface;
@@ -13,9 +15,7 @@ use Ray\Di\Di\Inject;
 
 trait StreamTransferInject
 {
-    /**
-     * @var TransferInterface
-     */
+    /** @var TransferInterface */
     private $responder;
 
     /**

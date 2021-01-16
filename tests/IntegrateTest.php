@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * This file is part of the BEAR.Streamer package.
- *
- * @license http://opensource.org/licenses/MIT MIT
  */
+
 namespace BEAR\Streamer;
 
 use BEAR\Resource\Module\ResourceModule;
@@ -15,29 +17,28 @@ use BEAR\Streamer\Resource\Page\StreamArray;
 use PHPUnit\Framework\TestCase;
 use Ray\Di\Injector;
 
+use function assert;
+use function method_exists;
+use function ob_get_clean;
+use function ob_start;
+use function rewind;
+use function stream_get_contents;
+
 class IntegrateTest extends TestCase
 {
-    /**
-     * @var array
-     */
+    /** @var array */
     public static $headers = [];
 
-    /**
-     * @var ResourceInterface
-     */
+    /** @var ResourceInterface */
     private $resource;
 
-    /**
-     * @var RenderInterface
-     */
+    /** @var RenderInterface */
     private $renderer;
 
-    /**
-     * @var Streamer
-     */
+    /** @var Streamer */
     private $streamer;
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         $injector = new Injector(new StreamModule(new ResourceModule(__NAMESPACE__)));
         $this->resource = $injector->getInstance(ResourceInterface::class);
@@ -45,25 +46,37 @@ class IntegrateTest extends TestCase
         $this->streamer = $injector->getInstance(StreamerInterface::class);
     }
 
-    public function caseProvider() : array
+    public function caseProvider(): array
     {
         return [
-            ['page://self/stream-array', '{
+            [
+                'page://self/stream-array',
+                '{
     "msg": "hello world",
     "stream": "Konichiwa stream !
 "
 }
-'],
-            ['page://self/stream-string', 'Konichiwa stream !
-'],
-            ['page://self/text-array', '{
+',
+            ],
+            [
+                'page://self/stream-string',
+                'Konichiwa stream !
+',
+            ],
+            [
+                'page://self/text-array',
+                '{
     "greeting": "Hello BEAR"
 }
-'],
-            ['page://self/text-string', '{
+',
+            ],
+            [
+                'page://self/text-string',
+                '{
     "value": "Hello BEAR"
 }
-']
+',
+            ],
         ];
     }
 
@@ -72,7 +85,7 @@ class IntegrateTest extends TestCase
      */
     public function testRender(string $uri, string $expected)
     {
-        /* @var $resource \BEAR\Resource\ResourceInterface */
+        /** @var ResourceInterface $resource */
         $ro = $this->resource->newInstance($uri);
         $ro->setRenderer($this->renderer);
         assert(method_exists($ro, 'onGet'));
@@ -95,8 +108,8 @@ class IntegrateTest extends TestCase
         $expected = [
             [
                 'Content-Type: application/json',
-                false
-            ]
+                false,
+            ],
         ];
         $this->assertSame($expected, $headers);
         $this->assertSame('{
