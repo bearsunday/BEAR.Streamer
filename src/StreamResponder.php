@@ -35,7 +35,7 @@ class StreamResponder implements TransferInterface
 
         // header
         foreach ($resourceObject->headers as $label => $value) {
-            header("{$label}: {$value}", false);
+            header("{$label}: {$value}", false); // phpcs:ignore SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly.ReferenceViaFallbackGlobalName
         }
 
         // code
