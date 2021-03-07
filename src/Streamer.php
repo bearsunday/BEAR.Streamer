@@ -31,6 +31,7 @@ final class Streamer implements StreamerInterface
      *
      * @Stream
      */
+    #[Stream]
     public function __construct($stream)
     {
         $this->stream = $stream;
