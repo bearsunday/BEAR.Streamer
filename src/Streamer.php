@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace BEAR\Streamer;
 
-use BEAR\Streamer\Annotation\Stream;
-
 use function array_keys;
 use function array_shift;
 use function fwrite;
@@ -28,8 +26,6 @@ final class Streamer implements StreamerInterface
 
     /**
      * @param resource $stream
-     *
-     * @Stream
      */
     #[Stream]
     public function __construct($stream)
