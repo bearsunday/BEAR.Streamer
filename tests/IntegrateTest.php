@@ -26,8 +26,6 @@ class IntegrateTest extends TestCase
     public static $headers = [];
     private ResourceInterface $resource;
     private RenderInterface $renderer;
-
-    /** @var Streamer */
     private StreamerInterface $streamer;
 
     protected function setUp(): void

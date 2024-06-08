@@ -9,6 +9,7 @@ use BEAR\Resource\ResourceObject;
 
 use function get_resource_type;
 use function is_array;
+use function is_iterable;
 use function is_resource;
 use function mt_getrandmax;
 use function random_int;
@@ -75,6 +76,7 @@ final class StreamRenderer implements RenderInterface
 
     private function pushArrayBody(ResourceObject $ro): void
     {
+        assert(is_iterable($ro->body));
         foreach ($ro->body as &$item) {
             if (is_resource($item) && get_resource_type($item) === 'stream') {
                 $item = $this->pushStream($item);

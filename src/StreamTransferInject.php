@@ -6,6 +6,8 @@ namespace BEAR\Streamer;
 
 use BEAR\Resource\RenderInterface;
 use BEAR\Resource\TransferInterface;
+use BEAR\Streamer\Annotation\Stream;
+use Ray\Di\Di\Inject;
 
 trait StreamTransferInject
 {
