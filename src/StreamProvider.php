@@ -10,6 +10,7 @@ use function assert;
 use function fopen;
 use function is_resource;
 
+/** @implements ProviderInterface<resource> */
 class StreamProvider implements ProviderInterface
 {
     /**

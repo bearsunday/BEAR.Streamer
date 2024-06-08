@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace BEAR\Streamer;
 
+use BEAR\Streamer\Annotation\Stream;
+
 use function array_keys;
 use function array_shift;
 use function fwrite;
