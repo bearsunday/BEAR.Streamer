@@ -14,12 +14,8 @@ use function rewind;
 
 class StreamResponder implements TransferInterface
 {
-    /** @var StreamerInterface */
-    private $streamer;
-
-    public function __construct(StreamerInterface $streamer)
+    public function __construct(private readonly StreamerInterface $streamer)
     {
-        $this->streamer = $streamer;
     }
 
     /**

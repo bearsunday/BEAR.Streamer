@@ -24,15 +24,11 @@ class IntegrateTest extends TestCase
 {
     /** @var array<array<string>> */
     public static $headers = [];
-
-    /** @var ResourceInterface */
-    private $resource;
-
-    /** @var RenderInterface */
-    private $renderer;
+    private ResourceInterface $resource;
+    private RenderInterface $renderer;
 
     /** @var Streamer */
-    private $streamer;
+    private StreamerInterface $streamer;
 
     protected function setUp(): void
     {
@@ -42,9 +38,7 @@ class IntegrateTest extends TestCase
         $this->streamer = $injector->getInstance(StreamerInterface::class);
     }
 
-    /**
-     * @return array<array<string>>
-     */
+    /** @return array<array<string>> */
     public function caseProvider(): array
     {
         return [
@@ -79,9 +73,7 @@ class IntegrateTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider caseProvider
-     */
+    /** @dataProvider caseProvider */
     public function testRender(string $uri, string $expected): void
     {
         $ro = $this->resource->newInstance($uri);

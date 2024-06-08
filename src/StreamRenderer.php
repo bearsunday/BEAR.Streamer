@@ -10,28 +10,23 @@ use BEAR\Resource\ResourceObject;
 use function get_resource_type;
 use function is_array;
 use function is_resource;
-use function mt_rand;
+use function mt_getrandmax;
+use function random_int;
 use function uniqid;
 
 final class StreamRenderer implements RenderInterface
 {
-    /** @var RenderInterface */
-    private $renderer;
-
     /**
      * Pushed stream
      *
      * @var resource[]
      */
-    private $streams = [];
+    private array $streams = [];
 
-    /** @var StreamerInterface */
-    private $streamer;
-
-    public function __construct(RenderInterface $renderer, StreamerInterface $streamer)
-    {
-        $this->renderer = $renderer;
-        $this->streamer = $streamer;
+    public function __construct(
+        private readonly RenderInterface $renderer,
+        private readonly StreamerInterface $streamer
+    ) {
     }
 
     /**
@@ -60,12 +55,10 @@ final class StreamRenderer implements RenderInterface
         return $this->pushScalarBody($ro);
     }
 
-    /**
-     * @param resource $item
-     */
+    /** @param resource $item */
     private function pushStream($item): string
     {
-        $id = uniqid(__FUNCTION__ . mt_rand(), true) . '_';
+        $id = uniqid(__FUNCTION__ . random_int(0, mt_getrandmax()), true) . '_';
         $this->streams[$id] = $item; // push
 
         return $id;
