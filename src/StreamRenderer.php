@@ -7,6 +7,7 @@ namespace BEAR\Streamer;
 use BEAR\Resource\RenderInterface;
 use BEAR\Resource\ResourceObject;
 
+use function assert;
 use function get_resource_type;
 use function is_array;
 use function is_iterable;
