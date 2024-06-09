@@ -20,26 +20,16 @@ use const PREG_SET_ORDER;
 
 final class Streamer implements StreamerInterface
 {
-    /** @var resource */
-    private $stream;
-
     /** @var array<resource> */
-    private $streams = [];
+    private array $streams = [];
 
-    /**
-     * @param resource $stream
-     *
-     * @Stream
-     */
+    /** @param resource $stream */
     #[Stream]
-    public function __construct($stream)
+    public function __construct(private $stream)
     {
-        $this->stream = $stream;
     }
 
-    /**
-     * @param resource[] $streams
-     */
+    /** @param resource[] $streams */
     public function addStreams(array $streams): void
     {
         $this->streams += $streams;

@@ -6,9 +6,7 @@ namespace BEAR\Streamer;
 
 interface StreamerInterface
 {
-    /**
-     * @param resource[] $streams
-     */
+    /** @param resource[] $streams */
     public function addStreams(array $streams): void;
 
     /**

@@ -14,23 +14,16 @@ trait StreamTransferInject
     /** @var TransferInterface */
     private $responder;
 
-    /**
-     * @return static
-     *
-     * @Inject
-     * @Stream
-     */
-    #[Inject, Stream]
+    /** @return static */
+    #[Inject]
+    #[Stream]
     public function setRenderer(RenderInterface $render)
     {
         return parent::setRenderer($render);
     }
 
-    /**
-     * @Inject
-     * @Stream
-     */
-    #[Inject, Stream]
+    #[Inject]
+    #[Stream]
     public function setTransfer(TransferInterface $responder): void
     {
         $this->responder = $responder;
@@ -42,6 +35,7 @@ trait StreamTransferInject
     public function transfer(TransferInterface $responder, array $server): void
     {
         unset($responder);
+
         parent::transfer($this->responder, $server);
     }
 }

@@ -12,14 +12,12 @@ use function fread;
 use function http_response_code;
 use function rewind;
 
+use const PHP_SAPI;
+
 class StreamResponder implements TransferInterface
 {
-    /** @var StreamerInterface */
-    private $streamer;
-
-    public function __construct(StreamerInterface $streamer)
+    public function __construct(private readonly StreamerInterface $streamer)
     {
-        $this->streamer = $streamer;
     }
 
     /**
@@ -29,7 +27,7 @@ class StreamResponder implements TransferInterface
     {
         unset($server);
         // render
-        if (! $resourceObject->view) {
+        if ($resourceObject->view === null) {
             $resourceObject->toString();
         }
 
@@ -39,7 +37,9 @@ class StreamResponder implements TransferInterface
         }
 
         // code
-        http_response_code($resourceObject->code);
+        if (PHP_SAPI !== 'cli') {
+            http_response_code($resourceObject->code);
+        }
 
         // stream body
         $stream = $this->streamer->getStream((string) $resourceObject->view);
