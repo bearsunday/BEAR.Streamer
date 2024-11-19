@@ -6,10 +6,9 @@ namespace BEAR\Streamer\Annotation;
 
 use Attribute;
 use Ray\Di\Di\Qualifier;
-use function is_string;
-use function var_dump;
 
-#[Attribute(Attribute::TARGET_METHOD), Qualifier]
+#[Attribute(Attribute::TARGET_METHOD)]
+#[Qualifier]
 final class Stream
 {
 }

@@ -27,7 +27,7 @@ final class StreamRenderer implements RenderInterface
 
     public function __construct(
         private readonly RenderInterface $renderer,
-        private readonly StreamerInterface $streamer
+        private readonly StreamerInterface $streamer,
     ) {
     }
 
