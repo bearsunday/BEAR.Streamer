@@ -32,7 +32,7 @@ final class StreamRenderer implements RenderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function render(ResourceObject $ro)
     {
@@ -44,7 +44,7 @@ final class StreamRenderer implements RenderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function getView(ResourceObject $ro): string
     {

@@ -14,7 +14,7 @@ use function is_resource;
 class StreamProvider implements ProviderInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @return resource
      */

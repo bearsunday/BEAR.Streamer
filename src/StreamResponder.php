@@ -21,7 +21,7 @@ class StreamResponder implements TransferInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function __invoke(ResourceObject $resourceObject, array $server): void
     {

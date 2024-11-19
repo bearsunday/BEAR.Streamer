@@ -31,7 +31,7 @@ trait StreamTransferInject
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function transfer(TransferInterface $responder, array $server): void
     {
