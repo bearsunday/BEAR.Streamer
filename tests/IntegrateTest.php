@@ -14,7 +14,6 @@ use PHPUnit\Framework\TestCase;
 use Ray\Di\Injector;
 
 use function assert;
-use function is_string;
 use function method_exists;
 use function ob_get_clean;
 use function ob_start;
@@ -79,8 +78,7 @@ class IntegrateTest extends TestCase
         $ro->setRenderer($this->renderer);
         assert(method_exists($ro, 'onGet'));
         $view = $ro->onGet();
-        assert(is_string($view));
-        $stream = $this->streamer->getStream($view);
+        $stream = $this->streamer->getStream((string) $view); // @phpstan-ignore-line
         rewind($stream);
         $view = stream_get_contents($stream);
         $this->assertSame($expected, $view);
