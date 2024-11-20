@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <ruleset
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="bearcs"
-        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="vendor-bin/tools/vendor/squizlabs/php_codesniffer/phpcs.xsd">
 
     <arg name="basepath" value="."/>
     <arg name="extensions" value="php"/>
     <arg name="parallel" value="80"/>
     <arg name="cache" value=".phpcs-cache"/>
 
-    <!-- Compatibility with PHP 7.2.0 -->
-    <config name="php_version" value="70200"/>
+    <!-- PHP Compatibility -->
+    <config name="php_version" value="80300"/>
 
     <!-- Ignore warnings, show progress of the run and show sniff names -->
     <arg value="nps"/>
@@ -17,17 +17,15 @@
     <!-- Directories to be checked -->
     <file>src</file>
     <file>tests</file>
-    <exclude-pattern>*/tests/tmp/*</exclude-pattern>
-    <exclude-pattern>*/src/Annotation/*</exclude-pattern>
-    <exclude-pattern>*/tests/header.php</exclude-pattern>
+    <exclude-pattern>*/tmp/*</exclude-pattern>
+    <exclude-pattern>*/Fake/*</exclude-pattern>
 
     <!-- PSR12 Coding Standard -->
     <rule ref="PSR12"/>
 
-    <!-- Doctrine Coding Standard -->
+    <!-- Based on Doctrine Coding Standard -->
     <rule ref="Doctrine">
-        <!-- Inapplicable for this project -->
-        <!-- Base -->
+        <!-- Exclude Rules -->
         <exclude name="Generic.Formatting.MultipleStatementAlignment.NotSame"/>
         <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/>
         <exclude name="SlevomatCodingStandard.Classes.SuperfluousAbstractClassNaming.SuperfluousPrefix"/>
@@ -35,19 +33,12 @@
         <exclude name="SlevomatCodingStandard.Classes.SuperfluousInterfaceNaming.SuperfluousSuffix"/>
         <exclude name="SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration.MissingVariable"/>
         <exclude name="SlevomatCodingStandard.Commenting.UselessInheritDocComment.UselessInheritDocComment"/>
-        <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint"/>
         <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint"/>
-        <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint"/>
-        <!-- /Base -->
-        <!-- Option -->
         <exclude name="SlevomatCodingStandard.ControlStructures.EarlyExit.EarlyExitNotUsed"/>
-        <!-- attribute -->
-        <exclude name="Squiz.WhiteSpace.FunctionSpacing.Before"/>
-        <!-- /Option -->
-        <!-- Exclude Fake files form Doctrine CS -->
-        <exclude-pattern>*/tests/Fake/*</exclude-pattern>
+        <exclude name="SlevomatCodingStandard.PHP.RequireExplicitAssertion.RequiredExplicitAssertion"/>
+        <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint" />
+        <exclude name="Squiz.NamingConventions.ValidVariableName.NotCamelCaps" />
     </rule>
-
     <!-- Additional Rules -->
     <rule ref="SlevomatCodingStandard.Commenting.DocCommentSpacing">
         <properties>
@@ -57,9 +48,6 @@
                 <element value="@throws"/>
             </property>
         </properties>
-    </rule>
-    <rule ref="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint">
-        <include-pattern>tests/*</include-pattern>
     </rule>
     <rule ref="SlevomatCodingStandard.Classes.PropertySpacing">
         <properties>
@@ -73,6 +61,4 @@
             <property name="searchAnnotations" value="true"/>
         </properties>
     </rule>
-    <exclude-pattern>*/Fake/*</exclude-pattern>
-    <exclude-pattern>*/tmp/*</exclude-pattern>
 </ruleset>

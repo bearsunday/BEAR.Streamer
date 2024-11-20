@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BEAR\Streamer;
 
 use BEAR\Resource\RenderInterface;
+use BEAR\Resource\ResourceObject;
 use BEAR\Resource\TransferInterface;
 use BEAR\Streamer\Annotation\Stream;
 use Ray\Di\Di\Inject;
@@ -14,7 +15,7 @@ trait StreamTransferInject
     /** @var TransferInterface */
     private $responder;
 
-    /** @return static */
+    /** @return ResourceObject */
     #[Inject]
     #[Stream]
     public function setRenderer(RenderInterface $render)
@@ -30,7 +31,7 @@ trait StreamTransferInject
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function transfer(TransferInterface $responder, array $server): void
     {

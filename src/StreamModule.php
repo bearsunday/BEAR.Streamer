@@ -13,7 +13,7 @@ use Ray\Di\Scope;
 class StreamModule extends AbstractModule
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function configure(): void
     {

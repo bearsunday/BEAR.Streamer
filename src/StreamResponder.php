@@ -21,7 +21,7 @@ class StreamResponder implements TransferInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function __invoke(ResourceObject $resourceObject, array $server): void
     {
@@ -38,7 +38,7 @@ class StreamResponder implements TransferInterface
 
         // code
         if (PHP_SAPI !== 'cli') {
-            http_response_code($resourceObject->code);
+            http_response_code($resourceObject->code); // @codeCoverageIgnore
         }
 
         // stream body

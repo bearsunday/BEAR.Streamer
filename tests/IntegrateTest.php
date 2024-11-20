@@ -12,6 +12,7 @@ use BEAR\Streamer\Annotation\Stream;
 use BEAR\Streamer\Resource\Page\StreamArray;
 use PHPUnit\Framework\TestCase;
 use Ray\Di\Injector;
+use Stringable;
 
 use function assert;
 use function method_exists;
@@ -77,8 +78,9 @@ class IntegrateTest extends TestCase
         $ro = $this->resource->newInstance($uri);
         $ro->setRenderer($this->renderer);
         assert(method_exists($ro, 'onGet'));
-        $view = (string) $ro->onGet();
-        $stream = $this->streamer->getStream($view);
+        $view = $ro->onGet();
+        assert($view instanceof Stringable);
+        $stream = $this->streamer->getStream((string) $view);
         rewind($stream);
         $view = stream_get_contents($stream);
         $this->assertSame($expected, $view);

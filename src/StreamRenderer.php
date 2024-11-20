@@ -27,12 +27,12 @@ final class StreamRenderer implements RenderInterface
 
     public function __construct(
         private readonly RenderInterface $renderer,
-        private readonly StreamerInterface $streamer
+        private readonly StreamerInterface $streamer,
     ) {
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function render(ResourceObject $ro)
     {
@@ -44,7 +44,7 @@ final class StreamRenderer implements RenderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function getView(ResourceObject $ro): string
     {

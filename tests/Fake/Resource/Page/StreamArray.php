@@ -9,7 +9,7 @@ class StreamArray extends ResourceObject
 {
     use StreamTransferInject;
 
-    public function onGet()
+    public function onGet(): static
     {
         $this->body = [
             'msg' =>'hello world',

@@ -6,7 +6,7 @@ use BEAR\Resource\ResourceObject;
 
 class TextString extends ResourceObject
 {
-    public function onGet()
+    public function onGet(): static
     {
         $this->body = 'Hello BEAR';
 

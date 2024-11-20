@@ -7,7 +7,4 @@ use Ray\ServiceLocator\ServiceLocator;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-// no annotation in PHP 8
-if (PHP_MAJOR_VERSION >= 8) {
-    ServiceLocator::setReader(new AttributeReader());
-}
+ServiceLocator::setReader(new AttributeReader());

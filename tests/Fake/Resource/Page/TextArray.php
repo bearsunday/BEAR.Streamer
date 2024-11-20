@@ -6,7 +6,7 @@ use BEAR\Resource\ResourceObject;
 
 class TextArray extends ResourceObject
 {
-    public function onGet()
+    public function onGet(): static
     {
         $this->body =[
             'greeting' => 'Hello BEAR'

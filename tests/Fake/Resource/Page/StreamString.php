@@ -9,7 +9,7 @@ class StreamString extends ResourceObject
     /**
      * Ignore renderer, just stream $this->body
      */
-    public function onGet()
+    public function onGet(): static
     {
         $this->body = fopen(__DIR__ . '/message.txt', 'r');
 
