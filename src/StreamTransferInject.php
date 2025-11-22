@@ -17,15 +17,15 @@ trait StreamTransferInject
 
     /** @return ResourceObject */
     #[Inject]
-    #[Stream]
-    public function setRenderer(RenderInterface $render)
+    public function setRenderer(#[Stream]
+    RenderInterface $render,)
     {
         return parent::setRenderer($render);
     }
 
     #[Inject]
-    #[Stream]
-    public function setTransfer(TransferInterface $responder): void
+    public function setTransfer(#[Stream]
+    TransferInterface $responder,): void
     {
         $this->responder = $responder;
     }

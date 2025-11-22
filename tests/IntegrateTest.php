@@ -19,6 +19,7 @@ use function method_exists;
 use function ob_get_clean;
 use function ob_start;
 use function rewind;
+use function str_replace;
 use function stream_get_contents;
 
 class IntegrateTest extends TestCase
@@ -83,7 +84,8 @@ class IntegrateTest extends TestCase
         $stream = $this->streamer->getStream((string) $view);
         rewind($stream);
         $view = stream_get_contents($stream);
-        $this->assertSame($expected, $view);
+        assert($view !== false);
+        $this->assertSameNormalized($expected, $view);
     }
 
     public function testTrait(): void
@@ -94,6 +96,7 @@ class IntegrateTest extends TestCase
         ob_start();
         $page->onGet()->transfer($dummy, []);
         $output = ob_get_clean();
+        assert($output !== false);
         $headers = self::$headers;
         $expected = [
             [
@@ -102,11 +105,17 @@ class IntegrateTest extends TestCase
             ],
         ];
         $this->assertSame($expected, $headers);
-        $this->assertSame('{
+        $this->assertSameNormalized('{
     "msg": "hello world",
     "stream": "Konichiwa stream !
 "
 }
 ', $output);
+    }
+
+    private function assertSameNormalized(string $expected, string $actual): void
+    {
+        $normalize = static fn (string $str): string => str_replace(["\r\n", "\r"], "\n", $str);
+        $this->assertSame($normalize($expected), $normalize($actual));
     }
 }
