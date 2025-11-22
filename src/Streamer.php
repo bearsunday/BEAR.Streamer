@@ -25,9 +25,10 @@ final class Streamer implements StreamerInterface
     private array $streams = [];
 
     /** @param resource $stream */
-    #[Stream]
-    public function __construct(private $stream)
-    {
+    public function __construct(
+        #[Stream]
+        private $stream,
+    ) {
     }
 
     /** @param resource[] $streams */
@@ -54,7 +55,7 @@ final class Streamer implements StreamerInterface
         foreach ($bodies as $body) {
             fwrite($stream, (string) $body);
             $index = array_shift($list);
-            if (isset($this->streams[$index])) {
+            if ($index !== null && isset($this->streams[$index])) {
                 $popStream = $this->streams[$index];
                 rewind($popStream);
                 stream_copy_to_stream($popStream, $stream);
